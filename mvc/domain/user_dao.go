@@ -15,7 +15,6 @@ var (
 func GetUser(userId int64) (*User, *utils.ApplicationError) {
 
 	if user := users[userId]; user != nil {
-		// 데이터 없는 상황
 		return user, nil
 	}
 	return nil, &utils.ApplicationError{
