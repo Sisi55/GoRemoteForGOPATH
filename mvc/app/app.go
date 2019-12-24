@@ -5,10 +5,19 @@ import (
 	"net/http"
 )
 
-func StartApp() {
-	http.HandleFunc("/users", controllers.GetUser)
+var (
+	router *gin.Engine
+)
 
-	if err := http.ListenAndServe(":8080", nil); err != nil {
+func init() {
+	router = gin.Default()
+	//router = gin.New()
+}
+
+func StartApp() {
+	mapUrls()
+
+	if err := router.Run(":8080"); err != nil {
 		panic(err)
 	}
 }
